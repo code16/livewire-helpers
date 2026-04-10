@@ -4,8 +4,8 @@
         Livewire.interceptRequest(({ onError }) => {
             onError(({ response, preventDefault }) => {
                 @if(!config('app.debug'))
-                    preventDefault();
                     if (response.status === 500) {
+                        preventDefault();
                         window.alert({{ \Illuminate\Support\Js::from(__('livewire-helpers::errors.500')) }});
                     }
                 @endif
