@@ -22,7 +22,7 @@ class LivewireServiceProvider extends PackageServiceProvider
         parent::boot();
 
         $this->app->booted(function () {
-            Blade::directive('livewireScripts', function($expression) {
+            Blade::directive('livewireScripts', function ($expression) {
                 return implode("\n", [
                     "{!! view('livewire-helpers::scripts')->render() !!}",
                     FrontendAssets::livewireScripts($expression),
