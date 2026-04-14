@@ -12,7 +12,12 @@
                 if (response.status === 419) {
                     preventDefault();
                     window.alert({{ \Illuminate\Support\Js::from(__('livewire-helpers::errors.419')) }});
-                    location.reload();
+                    {{-- Handle when the component is inside an iframe --}}
+                    try {
+                        window.top.location.reload();
+                    } catch (e) {
+                        location.reload();
+                    }
                 }
             })
         });
